@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Голосовое сообщение</title>
+  <title>Запись #047</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="card">
-    <div class="wave">🎙️</div>
-    <h1>У меня для тебя сообщение</h1>
-    <p class="subtitle">Нажми play — и слушай 👇</p>
-
+    <div class="tape-icon">📼</div>
+    <div class="status">СИГНАЛ ПОТЕРЯН...</div>
+    
     <audio id="player" src="voice.mp3"></audio>
 
     <button class="play-btn" id="playBtn" aria-label="Play">
@@ -23,11 +22,11 @@
     </div>
 
     <div class="time">
-      <span id="current">0:00</span>
-      <span id="duration">0:00</span>
+      <span id="current">00:00</span>
+      <span id="duration">00:00</span>
     </div>
 
-    <p class="footer">С любовью ❤️</p>
+    <p class="footer">НЕ ОСТАВАЙСЯ ЗДЕСЬ ДОЛГО</p>
   </div>
 
   <script>
@@ -39,7 +38,7 @@
     const duration = document.getElementById('duration');
 
     const fmt = s => {
-      const m = Math.floor(s / 60);
+      const m = Math.floor(s / 60).toString().padStart(2, '0');
       const sec = Math.floor(s % 60).toString().padStart(2, '0');
       return `${m}:${sec}`;
     };
@@ -67,6 +66,7 @@
     audio.addEventListener('ended', () => {
       icon.textContent = '▶';
       progress.style.width = '0%';
+      current.textContent = '00:00';
     });
   </script>
 </body>
